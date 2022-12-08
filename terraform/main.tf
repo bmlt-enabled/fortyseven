@@ -29,12 +29,12 @@ terraform {
 data "aws_vpc" "main" {
   filter {
     name   = "tag:Name"
-    values = ["tomato"]
+    values = ["bmlt"]
   }
 }
 
 data "aws_lb" "main" {
-  name = "tomato"
+  name = "bmlt"
 }
 
 data "aws_lb_listener" "main_443" {
