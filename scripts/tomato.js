@@ -13,7 +13,7 @@
 //   hubot meetings in tomato - returns the number of meetings in tomato.
 //
 // Notes:
-// 
+//
 //
 // Author:
 //   radius314
@@ -21,7 +21,7 @@ var moment = require('moment');
 var utils = require('./utils.js')
 
 module.exports = robot => {
-  var tomatoBaseUrl = 'https://tomato.na-bmlt.org';
+  var tomatoBaseUrl = 'https://aggregator.bmltenabled.org';
 
   robot.respond(/tomato last import/i, msg => {
     utils.requestGet(robot,
