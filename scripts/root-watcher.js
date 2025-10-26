@@ -18,7 +18,7 @@
 //   radius314
 let utils = require('./utils.js');
 let cron = require('cron');
-const rootListUrl = "https://raw.githubusercontent.com/bmlt-enabled/aggregator/main/rootServerList.json";
+const rootListUrl = "https://raw.githubusercontent.com/bmlt-enabled/aggregator/main/serverList.json";
 
 module.exports = robot => {
   new cron.CronJob({
@@ -52,8 +52,8 @@ function processMonitors(msg) {
       let roots = JSON.parse(resRoots);
       if (monitors.length > 0) {
         for (let monitor of monitors) {
-          if (roots.hasItem('rootURL', monitor['url'])) {
-            roots.removeItem('rootURL', monitor['url'])
+          if (roots.hasItem('url', monitor['url'])) {
+            roots.removeItem('url', monitor['url'])
           } else {
             removeMonitor(msg, monitor['id']);
           }
@@ -61,7 +61,7 @@ function processMonitors(msg) {
       }
 
       for (let root of roots) {
-        addMonitor(msg, root['name'], root['rootURL'], () => {})
+        addMonitor(msg, root['name'], root['url'], () => {})
       }
     });
   });
